@@ -1,0 +1,24 @@
+@import "../../variables";
+
+.calendar {
+  &__time-scale {
+    display: flex;
+    flex-direction: column;
+    padding-left: 17px;
+    padding-right: 7px;
+    margin-top: -7px;
+  }
+}
+
+.time-slot {
+  display: flex;
+  flex-grow: 1;
+  height: 60px;
+  margin: 0;
+
+  &__time {
+    margin: 0;
+    text-align: right;
+    color: $time-scale-color;
+  }
+}
