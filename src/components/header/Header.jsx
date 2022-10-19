@@ -7,6 +7,7 @@ import "../../variables.scss";
 
 const Header = ({ setStartDate, currentDay, createEvent, setCreateEvent }) => {
   const displayedMonthElem = getDisplayedMonth(currentDay);
+  console.log(currentDay)
 
   const onChangeWeek = (event) => {
     const switchArrow = event.target.closest("button");

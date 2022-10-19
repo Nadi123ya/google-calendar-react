@@ -10,12 +10,17 @@ import "./calendar.scss";
 //   render() {
 // const { weekDays } = this.props;
 
-const Calendar = ({ weekDays }) => {
+const Calendar = ({ weekDays, createEvent, setCreateEvent, currentMonday }) => {
   return (
     <section className="calendar">
       <Navigation weekDays={weekDays} />
       <div className="calendar__body">
-       <Week weekDays={weekDays}/>
+        <Week 
+        weekDays={weekDays}
+        createEvent={createEvent}
+        setCreateEvent={setCreateEvent}
+        currentMonday={currentMonday}
+         />
       </div>
     </section>
   );

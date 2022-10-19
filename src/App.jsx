@@ -11,7 +11,6 @@ const App = () => {
   const [eventDay, setEventDay] = useState(currentDay);
 
   const weekDays = generateWeekRange(getWeekStartDate(currentDay));
-
   return (
     <>
       <Header
@@ -20,7 +19,11 @@ const App = () => {
         createEvent={createEvent}
         setCreateEvent={setCreateEvent}
       />
-      <Calendar weekDays={weekDays} />
+      <Calendar 
+      currentMonday={getWeekStartDate(currentDay)}
+      weekDays={weekDays}
+      createEvent={createEvent}
+      setCreateEvent={setCreateEvent} />
       {
         !createEvent
           ? null
