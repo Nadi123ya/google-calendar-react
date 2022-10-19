@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-// import './modal.scss';
+import './modal.scss';
 // import propTypes from "prop-types";
 import ModalForm from "./ModalForm";
 
@@ -21,7 +21,7 @@ const Modal = ({ setEventDay, eventDay, createEvent, setCreateEvent }) => {
     };
   });
   return (
-    <div className="modal hidden overlay">
+    <div className="modal overlay">
       <div className="modal__content">
         <div className="create-event">
           <button className="create-event__close-btn">

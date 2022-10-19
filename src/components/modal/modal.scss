@@ -1,0 +1,76 @@
+@import "../../variables";
+
+.modal {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $modal-background-color;
+
+  &__content {
+    background: $color-white;
+    padding: 16px;
+    border: 1px solid $border-color-grey;
+    border-radius: 8px;
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #cccccc45;
+  z-index: 10;
+}
+
+.create-event {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  &__close-btn {
+    margin-left: auto;
+    transform: scale(2);
+    border: none;
+    cursor: pointer;
+    background: transparent;
+    &:hover {
+      opacity: 1;
+      background-color: $close-button-color;
+    }
+  }
+}
+
+.event-form {
+  display: flex;
+  flex-direction: column;
+
+  &__field {
+    margin: 8px;
+    border: none;
+  }
+  &__time {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__field {
+    width: 100%;
+    margin-bottom: 10px;
+    border: 2px solid $border-color-grey;
+  }
+
+  &__submit-btn {
+    margin: 8px;
+    margin-left: auto;
+    border: none;
+    color: #fff;
+    background-color: cornflowerblue;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+  }
+}
+

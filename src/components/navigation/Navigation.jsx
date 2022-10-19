@@ -4,6 +4,7 @@ import propTypes from "prop-types";
 const Navigation = ({ weekDays }) => {
   const daysOfWeek = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
 
+ 
   const getCurrentDay = (day, className) => {
     return new Date(new Date().toDateString()).getTime() === day.getTime()
       ? `${className} ${className}_active`

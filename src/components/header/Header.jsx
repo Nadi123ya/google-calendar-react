@@ -36,7 +36,7 @@ const Header = ({ setStartDate, currentDay, createEvent, setCreateEvent }) => {
     return () => {
       navElem.removeEventListener("click", onChangeWeek);
     };
-  });
+  }, []);
 
   return (
     <header className="header">
