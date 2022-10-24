@@ -1,9 +1,17 @@
 import React, { useEffect } from "react";
-import './modal.scss';
+import "./modal.scss";
 // import propTypes from "prop-types";
 import ModalForm from "./ModalForm";
 
-const Modal = ({ setEventDay, eventDay, createEvent, setCreateEvent }) => {
+const Modal = ({
+  setEventDay,
+  eventDay,
+  createEvent,
+  setCreateEvent,
+  fetchEvents,
+  events,
+}) => {
+  
   const onCloseModal = () => {
     setEventDay(new Date());
     setCreateEvent(!createEvent);
@@ -27,7 +35,12 @@ const Modal = ({ setEventDay, eventDay, createEvent, setCreateEvent }) => {
           <button className="create-event__close-btn">
             <i className="tiny material-icons">close</i>
           </button>
-          <ModalForm eventDay={eventDay} />
+          <ModalForm
+            eventDay={eventDay}
+            fetchEvents={fetchEvents}
+            onCloseModal={onCloseModal}
+            events={events}
+          />
         </div>
       </div>
     </div>

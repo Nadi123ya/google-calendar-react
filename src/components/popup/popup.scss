@@ -1,0 +1,14 @@
+@import "../../variables";
+.overlays {
+  position: absolute;
+  z-index: 1;
+}
+
+.popup {
+  &__content {
+    background-color: $background-color-white;
+    padding: 16px;
+    border: 1px solid $border-color-grey;
+    border-radius: 8px;
+  }
+}

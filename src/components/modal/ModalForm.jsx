@@ -1,5 +1,6 @@
 import React from "react";
 import moment from "moment";
+import { createEvent } from "../../gateway/eventsGateway";
 // import propTypes from "prop-types";
 
 class ModalForm extends React.Component {
@@ -7,24 +8,38 @@ class ModalForm extends React.Component {
     title: "",
     description: "",
     date: moment(this.props.eventDay).format("YYYY-MM-DD"),
-    fromTime: moment(this.props.eventDay).format("hh:mm"),
-    toTime: moment(this.props.eventDay).add(1, "hours").format("hh:mm"),
+    start: moment(this.props.eventDay).format("HH:mm"),
+    end: moment(this.props.eventDay).add(1, "hours").format("HH:mm"),
   };
 
   handleChange = (e) => {
-    const { name, val } = e.target;
-
+    const { name, value } = e.target;
     this.setState({
-      [name]: val,
+      [name]: value,
     });
   };
 
   onSubmit = (e) => {
     e.preventDefault();
-    return;
+
+    if (this.state.title === "" || this.state.description === "") {
+      alert("Please fill in the form!");
+      return;
+    }
+
+    const newEvent = {
+      title: this.state.title,
+      description: this.state.description,
+      start: new Date(moment(this.state.date + " " + this.state.start)),
+      end: new Date(moment(this.state.date + " " + this.state.end)),
+    };
+
+    createEvent(newEvent).then(() => this.props.fetchEvents());
+    this.props.onCloseModal();
   };
 
   render() {
+    // console.log(moment(this.props.eventDay).format("HH:mm"));
     return (
       <form className="event-form" onSubmit={this.onSubmit}>
         <input
@@ -47,7 +62,7 @@ class ModalForm extends React.Component {
             type="time"
             name="startTime"
             className="event-form__field"
-            value={this.state.fromTime}
+            value={this.state.start}
             onChange={this.handleChange}
           />
           <span>-</span>
@@ -55,7 +70,7 @@ class ModalForm extends React.Component {
             type="time"
             name="endTime"
             className="event-form__field"
-            value={this.state.toTime}
+            value={this.state.end}
             onChange={this.handleChange}
           />
         </div>

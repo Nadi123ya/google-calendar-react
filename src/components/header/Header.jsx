@@ -5,10 +5,8 @@ import { getDisplayedMonth } from "../../utils/time.units.js";
 import "./navigation.scss";
 import "../../variables.scss";
 
-const Header = ({ setStartDate, currentDay, createEvent, setCreateEvent }) => {
-  const displayedMonthElem = getDisplayedMonth(currentDay);
-  console.log(currentDay)
-
+const Header = ({ setNavDate, currentMonday, createEvent, setCreateEvent }) => {
+  const displayedMonthElem = getDisplayedMonth(currentMonday);
   const onChangeWeek = (event) => {
     const switchArrow = event.target.closest("button");
 
@@ -16,19 +14,19 @@ const Header = ({ setStartDate, currentDay, createEvent, setCreateEvent }) => {
       return;
     }
 
-    const mondayCurrentWeek = currentDay;
+    const mondayCurrentWeek = currentMonday;
     const day = new Date(mondayCurrentWeek).getDate();
     const week = 7;
 
     switchArrow.dataset.direction === "next"
-      ? setStartDate({
-          currentDay: new Date(mondayCurrentWeek.setDate(day + week)),
+      ? setNavDate({
+        date: new Date(mondayCurrentWeek.setDate(day + week)),
         })
       : switchArrow.dataset.direction === "prev"
-      ? setStartDate({
-          currentDay: new Date(mondayCurrentWeek.setDate(day - week)),
+      ? setNavDate({
+        date: new Date(mondayCurrentWeek.setDate(day - week)),
         })
-      : setStartDate({ currentDay: new Date() });
+      : setNavDate({ date: new Date() });
   };
 
   useEffect(() => {
