@@ -12,6 +12,7 @@ const Calendar = ({
   events,
   setPopup,
   setPopupStyles,
+  setEventToDelete,
 }) => {
   
   return (
@@ -27,6 +28,7 @@ const Calendar = ({
             events={events}
             setEventDay={setEventDay}
             setCreateEvent={setCreateEvent}
+            setEventToDelete = {setEventToDelete}
           />
         </div>
       </div>

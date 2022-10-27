@@ -8,63 +8,57 @@ const Week = ({
   setCreateEvent,
   setEventDay,
   events,
-  setPopUpStyles,
-  setPopup
+  setPopupStyles,
+  setPopup,
+  setEventToDelete
 }) => {
   useEffect(() => {
     const weekElem = document.querySelector(".calendar__week");
 
     function handleEventClick(event) {
       const isEvent = event.target.closest(".event");
+
       if (isEvent) {
-       
-      const eventCoordinates = isEvent.getBoundingClientRect();
-      // const eventId = isEvent.getAttribute("data-event-id");
-      // seteventToDelete(eventId);
-      setPopUpStyles({
-        top: `${eventCoordinates.y + eventCoordinates.height}px`,
-        left: `${eventCoordinates.x}px`,
-      })
-    }
+        const eventId = isEvent.getAttribute("data-event-id");
+        setEventToDelete(eventId);
+        const eventTitleElem = isEvent.querySelector(".event__title");
+        const eventTitle = eventTitleElem.textContent;
+        const eventDescrElem = isEvent.querySelector(".event__description");
+        const eventDescr = eventDescrElem.textContent;
+        const eventTimeElem = isEvent.querySelector(".event__time");
+        const eventTime = eventTimeElem.textContent;
+
+        setPopupStyles({
+          top: `${event.pageX}px`,
+          left: `${event.pageY}px`,
+          id: eventId,
+          title: eventTitle,
+          time: eventTime,
+          description: eventDescr,
+        });
+        setPopup(true);
+        return;
+      }
       const hour = 1;
       const choosenTime = event.target
         .closest(".calendar__time-slot")
         .getAttribute("data-time");
 
-    
-
       const choosenDay = event.target
         .closest(".calendar__day")
         .getAttribute("data-day");
 
-
       const chosenDate = weekDays.filter(
         (date) => Number(moment(date).format("DD")) === Number(choosenDay)
-        );
+      );
       setEventDay(moment(chosenDate[0]).add(choosenTime - hour, "hours"));
       setCreateEvent(true);
-      // const eventId = isEvent.getAttribute("data-event-id");
-
-      // const popupElem = document.querySelector('.popup')
-      // function openPopup(x, y) {
-      //     popupElem.style.top = `${y}px`
-      //     popupElem.style.left = `${x}px`
-      // }
-      
-
-      // setPopUpStyles({
-      //   top: `${event.pageX}px`,
-      //   left: `${event.pageY}px`,
-      // });
-      // openPopup(event.pageX, event.pageY)
-      setPopup(true);
     }
     weekElem.addEventListener("click", handleEventClick);
     return () => {
       weekElem.removeEventListener("click", handleEventClick);
     };
   });
-   console.log(events)
   return (
     <div className="calendar__week">
       {weekDays.map((dayStart) => {

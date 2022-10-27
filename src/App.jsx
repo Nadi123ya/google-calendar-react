@@ -15,15 +15,19 @@ const App = () => {
   const [eventDay, setEventDay] = useState(date);
 
   const [popUp, setPopup] = useState(false);
+
   const [popupStyles, setPopupStyles] = useState({
     top: "",
     left: "",
+    title: "",
+    time: "",
+    description: "",
+    id: "",
   });
 
-  // const { events } = getEventsArr;
-  // console.log(events);
+  const [eventToDelete, setEventToDelete] = useState(null);
+
   const weekDays = generateWeekRange(getWeekStartDate(date));
-  // console.log(weekDays)
 
   const fetchEvents = () => {
     getEvents().then((eventsList) =>
@@ -48,6 +52,7 @@ const App = () => {
         setCreateEvent={setCreateEvent}
         setPopup={setPopup}
         events={events.eventsList}
+        setEventToDelete={setEventToDelete}
       />
       {!createEvent ? null : (
         <Modal
@@ -58,7 +63,14 @@ const App = () => {
           fetchEvents={fetchEvents}
         />
       )}
-      {!popUp ? null : <Popup setPopup={setPopup} popupStyles={popupStyles} />}
+      {!popUp ? null : (
+        <Popup
+          setPopup={setPopup}
+          popupStyles={popupStyles}
+          fetchEvents={fetchEvents}
+          eventToDelete={eventToDelete}
+        />
+      )}
     </>
   );
 };

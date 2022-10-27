@@ -6,7 +6,6 @@ const formatTime = (time) => {
 };
 
 const Hour = ({ dataHour, hourEvents }) => {
-  console.log(hourEvents)
   return (
     <div className="calendar__time-slot" data-time={dataHour + 1}>
       {hourEvents.map(({ id, start, end, title, description }) => {

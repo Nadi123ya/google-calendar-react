@@ -10,7 +10,7 @@ const CreateButton = ({ setCreateEvent, createEvent }) => {
     return () => {
       btn.removeEventListener("click", onToggle);
     };
-  });
+  }, []);
   return (
     <button className="button create-event-btn">
       <svg width="30" height="30" viewBox="0 0 36 36">
