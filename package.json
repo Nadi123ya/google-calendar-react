@@ -1,0 +1,58 @@
+{
+  "name": "test11",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack serve --mode=development --devtool source-map",
+    "build": "webpack --mode=production",
+    "test": "jest",
+    "lint": "eslint src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nadi123ya/google-calendar-react.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nadi123ya/google-calendar-react.git/issues"
+  },
+  "homepage": "https://github.com/Nadi123ya/google-calendar-react.git#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.15.5",
+    "@babel/plugin-proposal-class-properties": "^7.14.5",
+    "@babel/preset-env": "^7.15.6",
+    "@babel/preset-react": "^7.14.5",
+    "babel-loader": "^8.2.2",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.3.0",
+    "html-webpack-plugin": "^5.3.2",
+    "jest": "^29.1.2",
+    "mini-css-extract-plugin": "^2.3.0",
+    "moment-locales-webpack-plugin": "^1.2.0",
+    "sass": "^1.49.9",
+    "sass-loader": "^12.1.0",
+    "style-loader": "^3.3.0",
+    "webpack": "^5.56.1",
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^4.3.1"
+  },
+  "dependencies": {
+    "classnames": "^2.3.2",
+    "core-js": "^3.18.1",
+    "eslint": "^8.18.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.1.0",
+    "materialize-css": "^1.0.0-rc.2",
+    "moment": "^2.29.4",
+    "prettier": "^2.7.1",
+    "prop-types": "^15.8.1",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-router-dom": "^5.1.2"
+  }
+}

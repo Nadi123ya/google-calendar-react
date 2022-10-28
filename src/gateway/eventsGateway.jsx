@@ -11,7 +11,7 @@ export const createEvent = (taskData) =>
     body: JSON.stringify(taskData),
   }).then((response) => {
     if (!response.ok) {
-      throw new Error('Failed to create the event');
+      throw new Error('Internal Server Error.Can`t display events');
     }
   });
 
@@ -24,7 +24,7 @@ export const updateEvent = (taskId, updatedTaskData) =>
     body: JSON.stringify(updatedTaskData),
   }).then((response) => {
     if (!response.ok) {
-      throw new Error('Failed to update the event');
+      throw new Error('Internal Server Error.Can`t display events');
     }
   });
 
@@ -33,6 +33,6 @@ export const deleteEvent = (taskId) =>
     method: 'DELETE',
   }).then((response) => {
     if (!response.ok) {
-      throw new Error('Failed to delete the event');
+      throw new Error('Internal Server Error.Can`t display events');
     }
   });
