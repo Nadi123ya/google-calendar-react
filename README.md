@@ -1,11 +1,11 @@
 ## Google calendar
-**[Site Link](https://nadi123ya.github.io/google-calendar-rest-api/)**
+**[Site Link]()**
 ### To start:
 
 ### Layout supports desktop (up-to-1440) version
 
 ## The tech stack is:
-- [React] (https://reactjs.org/)
+- [React](https://reactjs.org/)
 - [mockAPI](https://mockapi.io)
 - [JavaScript](https://www.javascript.com/)
 - [HML5](https://en.wikipedia.org/wiki/HTML5)
