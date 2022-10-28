@@ -40,3 +40,10 @@
     0px 1px 3px 1px $box-shadow-color-grey-second;
   background-color: $background-color-white;
 }
+
+.icon-button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+}
