@@ -3,27 +3,33 @@ import { deleteEvent } from "../../gateway/eventsGateway";
 import "./popup.scss";
 import propTypes from "prop-types";
 
-const Popup = ({ popupStyles, setPopup, fetchEvents, eventToDelete }) => {
+const Popup = ({ popupStyles, setPopup, fetchEvents, eventToDelete, setUpdatedEvent }) => {
   const { top, left, title, time, description, id } = popupStyles;
 
   useEffect(() => {
     const closeBtn = document.querySelector(".close__event-btn");
     const popupElem = document.querySelector(".popup");
+    const deleteBtn = document.querySelector(".delete__event-btn");
+    const updateBtn = document.querySelector(".update__event-btn");
+
     const OnClosePopup = () => {
       setPopup(false);
     };
-
-    const deleteBtn = document.querySelector(".delete__event-btn");
 
     const handleEventDelete = () => {
       deleteEvent(eventToDelete).then(() => fetchEvents());
     };
 
+    const OpenUpdateModal = () => {
+      setUpdatedEvent(true);
+    };
+    updateBtn.addEventListener("click", OpenUpdateModal);
     closeBtn.addEventListener("click", OnClosePopup);
     deleteBtn.addEventListener("click", handleEventDelete);
     popupElem.addEventListener("click", OnClosePopup);
 
     return () => {
+      updateBtn.removeEventListener("click", OpenUpdateModal);
       closeBtn.removeEventListener("click", OnClosePopup);
       deleteBtn.removeEventListener("click", handleEventDelete);
       popupElem.removeEventListener("click", OnClosePopup);
@@ -61,5 +67,5 @@ Popup.propTypes = {
   popupStyles: propTypes.object,
   setPopup: propTypes.func,
   fetchEvents: propTypes.func,
-  eventToDelete: propTypes.number,
+  eventToDelete: propTypes.string,
 };

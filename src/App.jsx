@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Header from "./components/header/Header.jsx";
 import Calendar from "./components/calendar/Calendar.jsx";
 import Modal from "./components/modal/Modal.jsx";
+import ModalUpdated from "./components/modalUpdate/ModalUpdated.jsx";
 import Popup from "./components/popup/Popup.jsx";
 import { getEvents } from "./gateway/eventsGateway";
 import { getWeekStartDate, generateWeekRange } from "./utils/time.units.js";
@@ -15,6 +16,8 @@ const App = () => {
   const [eventDay, setEventDay] = useState(date);
 
   const [popUp, setPopup] = useState(false);
+
+  const [updateEvent, setUpdatedEvent] = useState(false);
 
   const [popupStyles, setPopupStyles] = useState({
     top: "",
@@ -36,11 +39,11 @@ const App = () => {
       })
     );
   };
+console.log(events)
+  // useEffect(() => {
+  //   fetchEvents();
+  // }, []);
 
-  useEffect(() => {
-    fetchEvents();
-  }, []);
-  
   return (
     <>
       <Header
@@ -67,12 +70,24 @@ const App = () => {
           fetchEvents={fetchEvents}
         />
       )}
+
       {!popUp ? null : (
         <Popup
           setPopup={setPopup}
           popupStyles={popupStyles}
           fetchEvents={fetchEvents}
           eventToDelete={eventToDelete}
+          setUpdatedEvent={setUpdatedEvent}
+        />
+      )}
+
+      {!updateEvent ? null : (
+        <ModalUpdated
+          eventToDelete={eventToDelete}
+          events={events.eventsList}
+          setUpdatedEvent={setUpdatedEvent}
+          updateEvent={updateEvent}
+          // popupStyles={popupStyles}
         />
       )}
     </>
