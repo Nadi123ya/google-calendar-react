@@ -2,8 +2,8 @@ import React from "react";
 import Navigation from "../navigation/Navigation";
 import Week from "../week/Week";
 import Sidebar from "../sidebar/Sidebar";
-
 import "./calendar.scss";
+import propTypes from 'prop-types';
 
 const Calendar = ({
   setEventDay,
@@ -37,3 +37,12 @@ const Calendar = ({
 };
 
 export default Calendar;
+
+Calendar.propTypes = {
+  weekDays: propTypes.array,
+  setEventDay: propTypes.func,
+  setCreateEvent: propTypes.func,
+  setPopup: propTypes.func,
+  setPopUpStyles: propTypes.func,
+  seteventToDelete: propTypes.func,
+};

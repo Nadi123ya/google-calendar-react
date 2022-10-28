@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import propTypes from "prop-types";
 
 const CreateButton = ({ setCreateEvent, createEvent }) => {
   useEffect(() => {
@@ -10,7 +11,7 @@ const CreateButton = ({ setCreateEvent, createEvent }) => {
     return () => {
       btn.removeEventListener("click", onToggle);
     };
-  }, []);
+  });
   return (
     <button className="button create-event-btn">
       <svg width="30" height="30" viewBox="0 0 36 36">
@@ -27,3 +28,7 @@ const CreateButton = ({ setCreateEvent, createEvent }) => {
 
 export default CreateButton;
 
+CreateButton.propTypes = {
+  setCreateEvent: propTypes.func,
+  createEvent: propTypes.bool,
+};

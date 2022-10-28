@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { deleteEvent } from "../../gateway/eventsGateway";
 import "./popup.scss";
+import propTypes from "prop-types";
 
 const Popup = ({ popupStyles, setPopup, fetchEvents, eventToDelete }) => {
   const { top, left, title, time, description, id } = popupStyles;
@@ -27,7 +28,7 @@ const Popup = ({ popupStyles, setPopup, fetchEvents, eventToDelete }) => {
       deleteBtn.removeEventListener("click", handleEventDelete);
       popupElem.removeEventListener("click", OnClosePopup);
     };
-  }, []);
+  });
 
   return (
     <div className="popup overlays" style={{ top: `${top}`, left: `${left}` }}>
@@ -44,7 +45,7 @@ const Popup = ({ popupStyles, setPopup, fetchEvents, eventToDelete }) => {
           </button>
         </div>
         <div className="popup__description">
-          <div className="popup__id" data-event-id={id}></div>
+          {/* <div className="popup__id" data-event-id={id}></div> */}
           <p className="popup__title">{title}</p>
           <p className="popup__event">{time}</p>
           <p className="popup__text">{description}</p>
@@ -55,3 +56,10 @@ const Popup = ({ popupStyles, setPopup, fetchEvents, eventToDelete }) => {
 };
 
 export default Popup;
+
+Popup.propTypes = {
+  popupStyles: propTypes.object,
+  setPopup: propTypes.func,
+  fetchEvents: propTypes.func,
+  eventToDelete: propTypes.number,
+};

@@ -1,7 +1,6 @@
 import React from "react";
 import moment from "moment";
 import { createEvent } from "../../gateway/eventsGateway";
-// import propTypes from "prop-types";
 
 class ModalForm extends React.Component {
   state = {
@@ -39,7 +38,6 @@ class ModalForm extends React.Component {
   };
 
   render() {
-    // console.log(moment(this.props.eventDay).format("HH:mm"));
     return (
       <form className="event-form" onSubmit={this.onSubmit}>
         <input

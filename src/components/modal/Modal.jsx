@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "./modal.scss";
-// import propTypes from "prop-types";
+import propTypes from "prop-types";
 import ModalForm from "./ModalForm";
 
 const Modal = ({
@@ -47,3 +47,12 @@ const Modal = ({
   );
 };
 export default Modal;
+
+Modal.propTypes = {
+  setEventDay: propTypes.func,
+  eventDay: propTypes.object,
+  createEvent: propTypes.bool,
+  setCreateEvent: propTypes.func,
+  fetchEvents: propTypes.func,
+  events: propTypes.array,
+};

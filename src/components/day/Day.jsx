@@ -2,7 +2,6 @@ import React from "react";
 import Hour from "../hour/Hour";
 import Clock from "../clock/Clock";
 import { createNumbersArray } from "../../utils/time.units.js";
-
 import propTypes from "prop-types";
 
 const Day = ({ dataDay, dayEvents }) => {
@@ -27,6 +26,7 @@ const Day = ({ dataDay, dayEvents }) => {
 export default Day;
 
 Day.propTypes = {
-  weekDays: propTypes.array,
+  dataDay: propTypes.number,
+  dayEvents: propTypes.array,
 };
 

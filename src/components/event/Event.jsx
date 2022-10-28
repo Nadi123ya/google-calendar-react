@@ -1,7 +1,6 @@
 import React from "react";
 import "./event.scss";
-// import moment from "moment/moment";
-// import propTypes from "prop-types";
+import propTypes from "prop-types";
 
 const Event = ({ height, marginTop, title, id, description, time }) => {
   const eventPosition = {
@@ -19,7 +18,11 @@ const Event = ({ height, marginTop, title, id, description, time }) => {
 
 export default Event;
 
-// Week.propTypes = {
-//   weekDays: propTypes.array,
-// };
-
+Event.propTypes = {
+  height: propTypes.number,
+  marginTop: propTypes.number,
+  title: propTypes.string,
+  id: propTypes.string,
+  description: propTypes.string,
+  time: propTypes.string,
+};

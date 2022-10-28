@@ -5,6 +5,7 @@
 ### Layout supports desktop (up-to-1440) version
 
 ## The tech stack is:
+- [React] (https://reactjs.org/)
 - [mockAPI](https://mockapi.io)
 - [JavaScript](https://www.javascript.com/)
 - [HML5](https://en.wikipedia.org/wiki/HTML5)

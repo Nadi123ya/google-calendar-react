@@ -10,7 +10,7 @@ const Week = ({
   events,
   setPopupStyles,
   setPopup,
-  setEventToDelete
+  setEventToDelete,
 }) => {
   useEffect(() => {
     const weekElem = document.querySelector(".calendar__week");
@@ -87,4 +87,10 @@ export default Week;
 
 Week.propTypes = {
   weekDays: propTypes.array,
+  setCreateEvent: propTypes.func,
+  setEventDay: propTypes.func,
+  events: propTypes.array,
+  setPopupStyles: propTypes.func,
+  setPopup: propTypes.func,
+  setEventToDelete: propTypes.func,
 };
