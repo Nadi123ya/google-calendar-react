@@ -40,7 +40,7 @@ const Popup = ({ popupStyles, setPopup, fetchEvents, eventToDelete, setUpdatedEv
     <div className="popup overlays" style={{ top: `${top}`, left: `${left}` }}>
       <div className="popup__content">
         <div className="popup__buttons">
-          <button className="delete__event-btn" id={eventToDelete}>
+          <button className="delete__event-btn" >
             <i className="small material-icons">delete</i>
           </button>
           <button className="update__event-btn">

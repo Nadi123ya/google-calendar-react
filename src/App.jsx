@@ -39,10 +39,10 @@ const App = () => {
       })
     );
   };
-console.log(events)
-  // useEffect(() => {
-  //   fetchEvents();
-  // }, []);
+
+  useEffect(() => {
+    fetchEvents();
+  }, []);
 
   return (
     <>
@@ -87,7 +87,7 @@ console.log(events)
           events={events.eventsList}
           setUpdatedEvent={setUpdatedEvent}
           updateEvent={updateEvent}
-          // popupStyles={popupStyles}
+          fetchEvents={fetchEvents}
         />
       )}
     </>
