@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import moment from "moment";
 import { createEvent } from "../../gateway/eventsGateway";
 
-const ModalForm = ({ eventDay, fetchEvents, onCloseModal, events }) => {
+const ModalForm = ({ eventDay, fetchEvents, onCloseModal }) => {
 
   const [modal, setModal] = useState({
     title: "",
@@ -15,6 +15,7 @@ const ModalForm = ({ eventDay, fetchEvents, onCloseModal, events }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setModal({
+      ...modal,
       [name]: value,
     });
   };
@@ -87,37 +88,3 @@ const ModalForm = ({ eventDay, fetchEvents, onCloseModal, events }) => {
 
 export default ModalForm;
 
-// class ModalForm extends React.Component {
-//   state = {
-//     title: "",
-//     description: "",
-//     date: moment(this.props.eventDay).format("YYYY-MM-DD"),
-//     start: moment(this.props.eventDay).format("HH:mm"),
-//     end: moment(this.props.eventDay).add(1, "hours").format("HH:mm"),
-//   };
-
-//   handleChange = (e) => {
-//     const { name, value } = e.target;
-//     this.setState({
-//       [name]: value,
-//     });
-//   };
-
-//   onSubmit = (e) => {
-//     e.preventDefault();
-
-//     if (this.state.title === "" || this.state.description === "") {
-//       alert("Please fill in the form!");
-//       return;
-//     }
-
-//     const newEvent = {
-//       title: this.state.title,
-//       description: this.state.description,
-//       start: new Date(moment(this.state.date + " " + this.state.start)),
-//       end: new Date(moment(this.state.date + " " + this.state.end)),
-//     };
-
-//     createEvent(newEvent).then(() => this.props.fetchEvents());
-//     this.props.onCloseModal();
-//   };

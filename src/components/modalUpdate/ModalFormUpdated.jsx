@@ -1,90 +1,93 @@
-import React from "react";
+import React, {useState} from "react";
 import moment from "moment";
 import { updateEvent } from "../../gateway/eventsGateway";
 
-class ModalFormUpdated extends React.Component {
-  state = {
-    title: this.props.updatedEvent.title,
-    description: this.props.updatedEvent.description,
-    date: moment(this.props.updatedEvent.start).format("YYYY-MM-DD"),
-    start: moment(this.props.updatedEvent.start).format("HH:mm"),
-    end: moment(this.props.updatedEvent.end).format("HH:mm"),
-  };
-
-  handleChange = (e) => {
+const ModalFormUpdated = ({
+  fetchEvents,
+  onCloseModal,
+  eventToDelete,
+  updatedEvent,
+}) => {
+  const [updatedModal, setUpdatedModal] = useState({
+    title: updatedEvent.title,
+    description: updatedEvent.description,
+    date: moment(updatedEvent.start).format("YYYY-MM-DD"),
+    start: moment(updatedEvent.start).format("HH:mm"),
+    end: moment(updatedEvent.end).format("HH:mm"),
+  });
+  const handleChange = (e) => {
     const { name, value } = e.target;
-    this.setState({
+    setUpdatedModal({
+      ...updatedModal,
       [name]: value,
     });
   };
 
-  onSubmit = (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
 
-    if (this.state.title === "" || this.state.description === "") {
+    if (updatedModal.title === "" || updatedModal.description === "") {
       alert("Please fill in the form!");
       return;
     }
 
     const updatedEvent = {
-      title: this.state.title,
-      description: this.state.description,
-      start: new Date(moment(this.state.date + " " + this.state.start)),
-      end: new Date(moment(this.state.date + " " + this.state.end)),
+      title: updatedModal.title,
+      description: updatedModal.description,
+      start: new Date(moment(updatedModal.date + " " + updatedModal.start)),
+      end: new Date(moment(updatedModal.date + " " + updatedModal.end)),
     };
 
-    updateEvent(this.props.eventToDelete, updatedEvent).then(() => this.props.fetchEvents());
-    this.props.onCloseModal();
+    updateEvent(eventToDelete, updatedEvent).then(() => fetchEvents());
+    onCloseModal();
   };
 
-  render() {
-    return (
-      <form className="event-form" onSubmit={this.onSubmit}>
+  return (
+    <form className="event-form" onSubmit={onSubmit}>
+      <input
+        type="text"
+        name="title"
+        placeholder="Title"
+        className="event-form__field"
+        value={updatedModal.title}
+        onChange={handleChange}
+      />
+      <div className="event-form__time">
         <input
-          type="text"
-          name="title"
-          placeholder="Title"
+          type="date"
+          name="date"
           className="event-form__field"
-          value={this.state.title}
-          onChange={this.handleChange}
+          value={updatedModal.date}
+          onChange={handleChange}
         />
-        <div className="event-form__time">
-          <input
-            type="date"
-            name="date"
-            className="event-form__field"
-            value={this.state.date}
-            onChange={this.handleChange}
-          />
-          <input
-            type="time"
-            name="startTime"
-            className="event-form__field"
-            value={this.state.start}
-            onChange={this.handleChange}
-          />
-          <span>-</span>
-          <input
-            type="time"
-            name="endTime"
-            className="event-form__field"
-            value={this.state.end}
-            onChange={this.handleChange}
-          />
-        </div>
-        <textarea
-          name="description"
-          placeholder="Description"
+        <input
+          type="time"
+          name="startTime"
           className="event-form__field"
-          value={this.state.description}
-          onChange={this.handleChange}
-        ></textarea>
-        <button type="submit" className="event-form__submit-btn">
-          Create
-        </button>
-      </form>
-    );
-  }
-}
+          value={updatedModal.start}
+          onChange={handleChange}
+        />
+        <span>-</span>
+        <input
+          type="time"
+          name="endTime"
+          className="event-form__field"
+          value={updatedModal.end}
+          onChange={handleChange}
+        />
+      </div>
+      <textarea
+        name="description"
+        placeholder="Description"
+        className="event-form__field"
+        value={updatedModal.description}
+        onChange={handleChange}
+      ></textarea>
+      <button type="submit" className="event-form__submit-btn">
+        Create
+      </button>
+    </form>
+  );
+};
 
 export default ModalFormUpdated;
