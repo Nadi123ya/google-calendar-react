@@ -3,7 +3,7 @@
 .header {
   display: flex;
   position: fixed;
-  max-width: 1440px;
+  // max-width: 1440px;
   margin: 0 auto;
   padding: 18px 0 16px 27px;
   top: 0;
@@ -12,6 +12,7 @@
   width: 100%;
   border-bottom: 1px solid $border-color-grey;
   background-color: $background-color-white;
+  width: 100vw;
 }
 
 .navigation__today-btn {

@@ -5,7 +5,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: $modal-background-color;
+  
 
   &__content {
     background: $color-white;
@@ -21,7 +21,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #cccccc45;
+  background-color: $modal-background-color;
   z-index: 10;
 }
 

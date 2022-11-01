@@ -4,7 +4,7 @@ import "./popup.scss";
 import propTypes from "prop-types";
 
 const Popup = ({ popupStyles, setPopup, fetchEvents, eventToDelete, setUpdatedEvent }) => {
-  const { top, left, title, time, description, id } = popupStyles;
+  const { top, left, title, time, description} = popupStyles;
 
   useEffect(() => {
     const closeBtn = document.querySelector(".close__event-btn");
@@ -51,7 +51,6 @@ const Popup = ({ popupStyles, setPopup, fetchEvents, eventToDelete, setUpdatedEv
           </button>
         </div>
         <div className="popup__description">
-          {/* <div className="popup__id" data-event-id={id}></div> */}
           <p className="popup__title">{title}</p>
           <p className="popup__event">{time}</p>
           <p className="popup__text">{description}</p>
